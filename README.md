@@ -1,29 +1,103 @@
-# Welcome to your Lovable project
+# ARK Finance Consultancy
 
-This project was built with [Lovable](https://lovable.dev).
+**Solution to every financial problem**
 
-## Build with Lovable
+ARK Finance Consultancy is a financial advisory firm based in Vastral, Ahmedabad, Gujarat. Founded in 2026 by Karan Joshi (CAFC Qualified), the firm serves 1,500+ clients across Gujarat with four core practice areas: lending, taxation, investment advisory, and insurance.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Features
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Home** — Hero, stats, services overview, process steps and testimonials
+- **About** — Company story, founder bio, and team showcase
+- **Services** — Detailed pages for Loan Financing, Insurance, Tax Consultancy, and Financial Management
+- **Team** — Team member cards with photos and bios
+- **Testimonials** — Client reviews and ratings
+- **Blog / Insights** — Financial articles and guides
+- **Contact** — Lead form, newsletter signup and office details
+- **WhatsApp Integration** — One-click chat button on every page
 
-## Development
+## Tech Stack
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- **Framework:** [TanStack Start](https://tanstack.com/start) + React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **UI Components:** Radix UI + shadcn/ui
+- **Backend / DB:** Supabase (PostgreSQL, Auth, Storage)
+- **Build Tool:** Vite 8
+- **Charts:** Recharts
+- **Forms:** React Hook Form + Zod validation
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ ([install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm or bun
+
+### Installation
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone https://github.com/DeepakNagar1757/Ark-Finance-Final.git
+cd Ark-Finance-Final
+npm install
+```
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and fill in your Supabase credentials:
+
+```sh
+cp .env.example .env
+```
+
+```
+SUPABASE_PROJECT_ID=your_project_id
+SUPABASE_PUBLISHABLE_KEY=your_publishable_key
+SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PROJECT_ID=your_project_id
+VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
+VITE_SUPABASE_URL=https://your-project.supabase.co
+```
+
+### Run Development Server
+
+```sh
 npm run dev
 ```
 
-## Built with
+The site will be available at `http://localhost:8080`.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+### Production Build
+
+```sh
+npm run build
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+  components/
+    site/          # Site-specific components (Header, Footer, Cards, Forms)
+    ui/            # Reusable UI primitives (shadcn/ui)
+  routes/          # TanStack Router file-based routes
+  lib/             # Utilities, queries, site config
+  integrations/    # Supabase client and types
+supabase/
+  migrations/      # Database schema and seed data
+public/            # Static assets (images, favicon, robots.txt)
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format code with Prettier |
+
+## License
+
+Private — ARK Finance Consultancy. All rights reserved.
