@@ -80,7 +80,16 @@ function About() {
 
       <section className="border-y border-border bg-surface py-20 sm:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <SectionHeading eyebrow="The founder" title={`${SITE.founder}`} />
+          <div className="space-y-6">
+            <SectionHeading eyebrow="The founder" title={`${SITE.founder}`} />
+            <img
+              src="/karan-joshi.png"
+              alt="Karan Joshi, Founder & Principal Consultant"
+              className="w-full max-w-xs rounded-lg object-cover object-top shadow-card"
+              width={320}
+              height={400}
+            />
+          </div>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
             <p className="text-xs font-semibold uppercase tracking-wider text-accent">
               {SITE.founderTitle}
