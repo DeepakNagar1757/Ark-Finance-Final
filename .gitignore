@@ -27,6 +27,7 @@ dist-ssr
 
 # Root image copies
 Arun Joshi.jpeg
+/Karan Joshi.png
 
 # Editor directories and files
 .vscode/*
@@ -38,3 +39,6 @@ Arun Joshi.jpeg
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
+.env*

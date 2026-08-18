@@ -51,7 +51,12 @@ export const teamQuery = queryOptions({
       bio: m.bio.replace(/Inter CA/gi, "CAFC Qualified"),
     }));
     const hasArun = data.some((m) => m.name === "Arun Joshi");
-    return hasArun ? data : [...data, ARUN_JOSHI];
+    const result = hasArun ? data : [...data, ARUN_JOSHI];
+    return result.map((m) =>
+      m.name === "Karan Joshi" && !m.photo_url
+        ? { ...m, photo_url: "/karan-joshi.png" }
+        : m,
+    );
   },
 });
 
