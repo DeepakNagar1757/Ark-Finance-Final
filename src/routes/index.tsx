@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, CheckCircle2, Clock, MapPin, Phone } from "lucide-react";
+import { LottieAnimation } from "@/components/site/ClientLottie";
 import { SiteLayout, SectionHeading } from "@/components/site/SiteLayout";
-import { ServiceCard, StatBlock, TestimonialCard } from "@/components/site/Cards";
+import { ServiceCard, TestimonialCard } from "@/components/site/Cards";
 import { SITE, whatsappLink } from "@/lib/site";
 import { servicesQuery, testimonialsQuery } from "@/lib/queries";
+import businessAnalysis from "@/assets/business-analysis.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,18 +34,18 @@ function Home() {
 
   return (
     <SiteLayout>
-      <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 size-[28rem] rounded-full bg-primary-light/40 blur-3xl"
-        />
-        <div className="container-page relative grid gap-14 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
-          <div>
-            <p className="eyebrow">Ahmedabad · Gujarat · Est. {SITE.founded}</p>
+      <section
+        className="relative overflow-hidden bg-primary bg-cover bg-center bg-no-repeat text-primary-foreground"
+        style={{ backgroundImage: "url('/Hero-image.png')" }}
+      >
+        <div className="container-page relative py-20 sm:py-24 lg:py-28">
+          <div className="max-w-full md:max-w-[45%]">
+            <p className="eyebrow text-accent">Ahmedabad · Gujarat · Est. {SITE.founded}</p>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-6xl">
-              Solution to every <span className="text-accent">financial problem</span>
+              Solutions for every <br />
+              <span className="text-accent">financial decision.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
+            <p className="mt-6 max-w-[500px] text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
               ARK Finance Consultancy advises families and businesses on loans, insurance, taxation
               and investments — with a founder-led review on every single file we submit.
             </p>
@@ -52,7 +54,7 @@ function Home() {
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
               >
-                Contact for quote
+                Book Free Consultation
                 <ArrowRight className="size-4" aria-hidden />
               </Link>
               <a
@@ -76,25 +78,6 @@ function Home() {
               ))}
             </dl>
           </div>
-
-          <div className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-8">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-              Why clients stay
-            </p>
-            <ul className="mt-6 space-y-5">
-              {[
-                "CAFC Qualified founder Karan Joshi reviews every loan file, return and policy recommendation.",
-                "One team for loans, insurance, tax and investments — no running between advisors.",
-                "Transparent process: requirement analysis, documentation, deal close.",
-                "Open seven days a week, 9 AM to 9 PM, on call when it matters.",
-              ].map((point) => (
-                <li key={point} className="flex gap-3 text-sm leading-relaxed">
-                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-teal" aria-hidden />
-                  <span className="text-primary-foreground/85">{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
@@ -102,7 +85,7 @@ function Home() {
         <SectionHeading
           eyebrow="WE BUILD YOU NEXT FINANCIAL MOVE"
           title="Four practice areas, one accountable team"
-          intro="<!-- TODO: Karan to provide replacement copy --> Whether you need a sanction, a filing, a policy or a plan, the work is handled in-house and reviewed before it leaves our office."
+          intro="Whether you need a loan sanction, a return filing, an insurance policy or a growth plan, the work is handled with precision and objectivity, and reviewed thoroughly by experts."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.data?.map((service) => (
@@ -140,26 +123,19 @@ function Home() {
       </section>
 
       <section className="container-page py-20 sm:py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="Built on trust"
-              title="A young firm with a senior approach"
-              intro={`Founded in ${SITE.founded} by ${SITE.founder}, ${SITE.name} has grown to a 12-member team serving more than 1,500 clients across Ahmedabad and Gujarat. We compete on diligence, not on discounts.`}
-            />
-            <Link
-              to="/about"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              More about the firm
-              <ArrowRight className="size-4 text-accent" aria-hidden />
-            </Link>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2">
-            {SITE.stats.map((stat) => (
-              <StatBlock key={stat.label} value={stat.value} label={stat.label} />
-            ))}
-          </div>
+        <div className="max-w-2xl">
+          <SectionHeading
+            eyebrow="Built on trust"
+            title="A young firm with a senior approach"
+            intro={`Founded in ${SITE.founded} by ${SITE.founder}, ${SITE.name} has grown to a 12-member team serving more than 1,500 clients across Ahmedabad and Gujarat. We compete on diligence, not on discounts.`}
+          />
+          <Link
+            to="/about"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+          >
+            More about the firm
+            <ArrowRight className="size-4 text-accent" aria-hidden />
+          </Link>
         </div>
       </section>
 
@@ -202,29 +178,36 @@ function Home() {
                   to="/contact"
                   className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground"
                 >
-                  Contact for quote
+                Book Free Consultation
                 </Link>
                 <a
                   href={SITE.phoneHref}
-                  className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/30 px-6 py-3.5 text-sm font-semibold"
+                  className="inline-flex items-center gap-2 py-3.5 text-sm font-semibold text-primary-foreground/80 transition-colors hover:text-accent"
                 >
                   <Phone className="size-4 text-accent" aria-hidden />
                   {SITE.phoneDisplay}
                 </a>
               </div>
             </div>
-            <ul className="space-y-4 text-sm text-primary-foreground/80">
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
-                <span>
-                  {SITE.address.line1}, {SITE.address.area}
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <Clock className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
-                <span>{SITE.hours}</span>
-              </li>
-            </ul>
+            <div className="flex flex-col items-center gap-4">
+              <LottieAnimation
+                animationData={businessAnalysis}
+                className="w-full max-w-sm"
+                loop
+              />
+              <ul className="space-y-4 text-sm text-primary-foreground/80">
+                <li className="flex gap-3">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
+                  <span>
+                    {SITE.address.line1}, {SITE.address.area}
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <Clock className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
+                  <span>{SITE.hours}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
