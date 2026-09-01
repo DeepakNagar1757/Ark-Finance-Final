@@ -1,12 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, CheckCircle2, Clock, MapPin, Phone } from "lucide-react";
-import { LottieAnimation } from "@/components/site/ClientLottie";
 import { SiteLayout, SectionHeading } from "@/components/site/SiteLayout";
 import { ServiceCard, TestimonialCard } from "@/components/site/Cards";
 import { SITE, whatsappLink } from "@/lib/site";
 import { servicesQuery, testimonialsQuery } from "@/lib/queries";
-import businessAnalysis from "@/assets/business-analysis.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -190,10 +188,10 @@ function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <LottieAnimation
-                animationData={businessAnalysis}
-                className="w-full max-w-sm"
-                loop
+              <img
+                src="/Hero-image.png"
+                alt="Financial planning"
+                className="w-full max-w-sm opacity-80"
               />
               <ul className="space-y-4 text-sm text-primary-foreground/80">
                 <li className="flex gap-3">
