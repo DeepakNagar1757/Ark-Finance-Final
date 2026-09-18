@@ -7,7 +7,6 @@ const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/team", label: "Team" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/blog", label: "Insights" },
   { to: "/contact", label: "Contact" },
@@ -50,7 +49,7 @@ export function Header() {
             to="/contact"
             className="inline-flex items-center rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-light"
           >
-            Contact for quote
+            Book Free Consultation
           </Link>
         </div>
 

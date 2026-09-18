@@ -4,11 +4,11 @@ export const SITE = {
   tagline: "Solution to every financial problem",
   founded: 2026,
   founder: "Karan Joshi",
-  founderTitle: "Founder & Principal Consultant (CAFC Qualified)",
+  founderTitle: "Founder & Principal Consultant",
   city: "Ahmedabad",
   state: "Gujarat",
   address: {
-    line1: "302, RM Arcade",
+    line1: "203, RM Arcade",
     line2: "near Karnavati Cross Road, Takshshila School Road",
     area: "Vastral, Ahmedabad",
     region: "Gujarat, India",
@@ -17,7 +17,7 @@ export const SITE = {
   phoneHref: "tel:+916351377101",
   whatsapp: "916351377101",
   email: "arkfinance211@gmail.com",
-  hours: "Monday – Sunday, 9:00 AM – 9:00 PM",
+  hours: "Monday – Saturday, 10:00 AM – 7:00 PM",
   stats: [
     { value: "12", label: "Team members" },
     { value: "1,500+", label: "Clients served" },

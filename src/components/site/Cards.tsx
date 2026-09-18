@@ -4,6 +4,25 @@ import type { Service, TeamMember, Testimonial } from "@/lib/queries";
 
 const ICONS = { Landmark, ShieldCheck, FileText, TrendingUp } as const;
 
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  "loan-financing": {
+    src: "/services/loan-financing.webp",
+    alt: "Indian professional reviewing financial documents in an office",
+  },
+  "insurance-services": {
+    src: "/services/insurance-services.webp",
+    alt: "Indian consultants discussing documents at an office desk",
+  },
+  "tax-consultancy": {
+    src: "/services/tax-consultancy.webp",
+    alt: "Indian professional analyzing financial charts and reports",
+  },
+  "financial-management": {
+    src: "/services/financial-management.webp",
+    alt: "Indian business team collaborating in an office meeting",
+  },
+};
+
 export function ServiceCard({
   service,
   titleOverride,
@@ -12,24 +31,44 @@ export function ServiceCard({
   titleOverride?: string;
 }) {
   const Icon = ICONS[service.icon as keyof typeof ICONS] ?? Landmark;
+  const image = SERVICE_IMAGES[service.slug];
   return (
-    <article className="group flex h-full flex-col rounded-lg border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-accent/60">
-      <span className="inline-flex size-12 items-center justify-center rounded-md bg-secondary text-primary">
-        <Icon className="size-6" aria-hidden />
-      </span>
-      <h3 className="mt-5 text-lg font-semibold text-primary">{titleOverride ?? service.title}</h3>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{service.summary}</p>
-      <Link
-        to="/services"
-        hash={service.slug}
-        className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-      >
-        Learn more
-        <ArrowRight
-          className="size-4 text-accent transition-transform group-hover:translate-x-1"
-          aria-hidden
-        />
-      </Link>
+    <article className="group flex h-full flex-col rounded-lg border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:border-accent/60">
+      {image ? (
+        <div className="relative overflow-hidden rounded-t-lg">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="w-full min-h-[200px] max-h-[280px] object-cover object-bottom transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+          <span className="absolute left-3 top-3 inline-flex size-9 items-center justify-center rounded-md bg-background/90 text-primary shadow-sm backdrop-blur-sm">
+            <Icon className="size-4" aria-hidden />
+          </span>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center rounded-t-lg bg-secondary py-8">
+          <span className="inline-flex size-12 items-center justify-center rounded-md bg-background text-primary">
+            <Icon className="size-6" aria-hidden />
+          </span>
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-7">
+        <h3 className="text-lg font-semibold text-primary">{titleOverride ?? service.title}</h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{service.summary}</p>
+        <Link
+          to="/services"
+          hash={service.slug}
+          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+        >
+          Learn more
+          <ArrowRight
+            className="size-4 text-accent transition-transform group-hover:translate-x-1"
+            aria-hidden
+          />
+        </Link>
+      </div>
     </article>
   );
 }

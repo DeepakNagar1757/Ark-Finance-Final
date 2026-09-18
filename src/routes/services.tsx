@@ -8,6 +8,29 @@ import { servicesQuery } from "@/lib/queries";
 
 const ICONS = { Landmark, ShieldCheck, FileText, TrendingUp } as const;
 
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  "loan-financing": {
+    src: "/services/loan-financing.webp",
+    alt: "Indian professional reviewing financial documents in an office",
+  },
+  "insurance-services": {
+    src: "/services/insurance-services.webp",
+    alt: "Indian consultants discussing documents at an office desk",
+  },
+  "tax-consultancy": {
+    src: "/services/tax-consultancy.webp",
+    alt: "Indian professional analyzing financial charts and reports",
+  },
+  "financial-management": {
+    src: "/services/financial-management.webp",
+    alt: "Indian business team collaborating in an office meeting",
+  },
+};
+
+const EXTRA_FEATURES: Record<string, string[]> = {
+  "tax-consultancy": ["Audit services"],
+};
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -64,9 +87,24 @@ function Services() {
                 className="scroll-mt-28 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]"
               >
                 <div>
-                  <span className="inline-flex size-14 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                    <Icon className="size-7" aria-hidden />
-                  </span>
+                  {SERVICE_IMAGES[service.slug] ? (
+                    <div className="relative overflow-hidden rounded-lg">
+                      <img
+                        src={SERVICE_IMAGES[service.slug].src}
+                        alt={SERVICE_IMAGES[service.slug].alt}
+                        className="w-full min-h-[300px] max-h-[420px] object-cover object-bottom"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                      <span className="absolute left-3 top-3 inline-flex size-10 items-center justify-center rounded-md bg-background/90 text-primary shadow-sm backdrop-blur-sm">
+                        <Icon className="size-5" aria-hidden />
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="inline-flex size-14 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                      <Icon className="size-7" aria-hidden />
+                    </span>
+                  )}
                   <p className="eyebrow mt-6">0{index + 1} — Practice area</p>
                   <h2 className="mt-3 text-2xl font-semibold text-primary sm:text-3xl">
                     {service.title}
@@ -80,7 +118,7 @@ function Services() {
                   <p className="text-base leading-relaxed text-foreground">{service.description}</p>
                   {service.features.length > 0 && (
                     <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                      {service.features.map((feature) => (
+                      {[...service.features, ...(EXTRA_FEATURES[service.slug] ?? [])].map((feature) => (
                         <li key={feature} className="flex gap-2.5 text-sm text-muted-foreground">
                           <Check className="mt-0.5 size-4 shrink-0 text-teal" aria-hidden />
                           <span>{feature}</span>
@@ -92,7 +130,7 @@ function Services() {
                     href="#enquiry"
                     className="mt-8 inline-flex rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-light"
                   >
-                    Contact for quote
+                    Book Free Consultation
                   </a>
                 </div>
               </section>

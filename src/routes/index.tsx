@@ -34,12 +34,21 @@ function Home() {
 
   return (
     <SiteLayout>
-      <section
-        className="relative overflow-hidden bg-primary bg-cover bg-center bg-no-repeat text-primary-foreground"
-        style={{ backgroundImage: "url('/Hero-image.png')" }}
-      >
-        <div className="container-page relative py-20 sm:py-24 lg:py-28">
-          <div className="max-w-full md:max-w-[45%]">
+      <section className="relative overflow-hidden bg-primary text-primary-foreground">
+        {/* Background Image anchored to the right */}
+        <div
+          className="absolute inset-0 bg-cover bg-no-repeat bg-[position:right_center] md:bg-[position:right_center]"
+          style={{ backgroundImage: "url('/Hero-image.png')" }}
+          aria-hidden="true"
+        />
+        {/* Gradient overlay for smooth readability on the left */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-transparent lg:via-primary/60"
+          aria-hidden="true"
+        />
+
+        <div className="container-page relative z-10 py-20 sm:py-24 lg:py-28">
+          <div className="max-w-[560px]">
             <p className="eyebrow text-accent">Ahmedabad · Gujarat · Est. {SITE.founded}</p>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-6xl">
               Solutions for every <br />

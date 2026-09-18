@@ -3,6 +3,7 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { SERVICE_OPTIONS } from "@/lib/site";
+import { sendLeadEmails } from "@/routes/api/-send-email";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your full name.").max(100),
@@ -53,6 +54,18 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
       setFormError("We couldn't submit your enquiry. Please call us instead.");
       return;
     }
+
+    // Send notification + welcome emails (fire-and-forget, don't block form)
+    sendLeadEmails({
+      data: {
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone,
+        service: parsed.data.service,
+        message: parsed.data.message ?? "",
+      },
+    }).catch((err) => console.error("Failed to send lead emails:", err));
+
     setState("done");
     setValues({ ...EMPTY });
   }

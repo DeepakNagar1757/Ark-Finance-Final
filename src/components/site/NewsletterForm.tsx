@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { sendNewsletterWelcome } from "@/routes/api/-send-email";
 
 const schema = z.object({ email: z.string().trim().email().max(255) });
 
@@ -27,6 +28,12 @@ export function NewsletterForm({ className = "" }: { className?: string }) {
       setMessage("Something went wrong. Please try again.");
       return;
     }
+
+    // Send welcome email (fire-and-forget)
+    sendNewsletterWelcome({ data: { email: parsed.data.email.toLowerCase() } }).catch((err) =>
+      console.error("Failed to send newsletter welcome email:", err),
+    );
+
     setState("done");
     setMessage("You're subscribed. Thank you.");
     setEmail("");

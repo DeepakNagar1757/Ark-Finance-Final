@@ -26,7 +26,6 @@ export function Footer() {
             {[
               { to: "/about", label: "About us" },
               { to: "/services", label: "Services" },
-              { to: "/team", label: "Our team" },
               { to: "/testimonials", label: "Testimonials" },
               { to: "/blog", label: "Insights" },
               { to: "/contact", label: "Contact" },

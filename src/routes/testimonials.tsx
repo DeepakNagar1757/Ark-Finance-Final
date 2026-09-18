@@ -30,7 +30,7 @@ function Testimonials() {
     <SiteLayout>
       <PageHero
         eyebrow="Testimonials"
-        title="Trusted by more than 2,500 clients"
+        title="Trusted by more than 1,500 clients"
         intro="Referrals are how this practice grew. Here is what clients say in their own words."
       />
       <section className="container-page py-20 sm:py-24">
@@ -48,7 +48,7 @@ function Testimonials() {
             to="/contact"
             className="mt-7 inline-flex rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground"
           >
-            Contact for quote
+            Book Free Consultation
           </Link>
         </div>
       </section>

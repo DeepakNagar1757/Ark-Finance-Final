@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Visit our office at 302, RM Arcade, near Karnavati Cross Road, Vastral, Ahmedabad. Call +91 63513 77101 or WhatsApp us, 9 AM to 9 PM, seven days a week.",
+          "Visit our office at 203, RM Arcade, near Karnavati Cross Road, Takshshila School Road, Vastral, Ahmedabad. Call +91 63513 77101 or WhatsApp us, Monday to Saturday, 10 AM to 7 PM.",
       },
       { property: "og:title", content: "Contact ARK Finance Consultancy, Ahmedabad" },
       {

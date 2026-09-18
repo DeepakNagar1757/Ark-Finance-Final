@@ -1,6 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight } from "lucide-react";
 import { PageHero, SectionHeading, SiteLayout } from "@/components/site/SiteLayout";
 import { StatBlock, TeamCard } from "@/components/site/Cards";
 import { SITE } from "@/lib/site";
@@ -80,8 +79,7 @@ function About() {
 
       <section className="border-y border-border bg-surface py-20 sm:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div className="space-y-6">
-            <SectionHeading eyebrow="The founder" title={`${SITE.founder}`} />
+          <div>
             <img
               src="/karan-joshi.png"
               alt="Karan Joshi, Founder & Principal Consultant"
@@ -91,10 +89,18 @@ function About() {
             />
           </div>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-              {SITE.founderTitle}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+                {SITE.founderTitle}
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold text-primary">{SITE.founder}</h2>
+            </div>
+            <p>
+              Karan Joshi is CAFC Qualified by ICAI. He oversees client operations and ensures
+              every file meets ARK's quality standards, drawing on deep experience in lending,
+              taxation and investment advisory. He personally reviews client files and leads the
+              firm's 12-member team.
             </p>
-            <p>{founder?.bio}</p>
             <p>
               Karan's approach is unglamorous by design: read the file, check the arithmetic, ask
               the awkward question before the lender or the department does. It is the reason ARK's
@@ -106,26 +112,35 @@ function About() {
       </section>
 
       <section className="container-page py-20 sm:py-24">
-        <SectionHeading
-          eyebrow="Our people"
-          title="The team behind every file"
-          intro="Specialists across lending, taxation, insurance and client servicing."
-        />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {team.data
-            ?.filter((m) => ["Karan Joshi", "Arun Joshi"].includes(m.name))
-            .slice(0, 3)
-            .map((member) => (
-              <TeamCard key={member.id} member={member} />
-            ))}
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+                Head Consultant
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold text-primary">Arun Joshi</h2>
+            </div>
+            <p>
+              Arun oversees client operations and ensures every file meets ARK's quality standards
+              before it leaves the office. With a strong background in lending and client servicing,
+              he works closely with borrowers to structure files that clear underwriting on the first
+              submission.
+            </p>
+            <p>
+              His attention to detail and hands-on approach have made him a trusted point of contact
+              for clients across Ahmedabad and Gujarat.
+            </p>
+          </div>
+          <div>
+            <img
+              src="/arun-joshi.jpeg"
+              alt="Arun Joshi, Head Consultant"
+              className="w-full max-w-xs rounded-lg object-cover object-top shadow-card"
+              width={320}
+              height={400}
+            />
+          </div>
         </div>
-        <Link
-          to="/team"
-          className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-        >
-          Meet the full team
-          <ArrowRight className="size-4 text-accent" aria-hidden />
-        </Link>
       </section>
     </SiteLayout>
   );
