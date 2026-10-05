@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env["SMTP_USER"],
+    pass: process.env["SMTP_PASS"],
   },
 });
 
@@ -19,7 +19,7 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
   const info = await transporter.sendMail({
-    from: process.env.SMTP_FROM || "ARK Finance Consultancy <arkfinance211@gmail.com>",
+    from: process.env["SMTP_FROM"] || "ARK Finance Consultancy <arkfinance211@gmail.com>",
     to,
     subject,
     html,

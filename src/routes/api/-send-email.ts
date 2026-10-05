@@ -15,7 +15,7 @@ export const sendLeadEmails = createServerFn({ method: "POST" })
     message: string;
   }) => data)
   .handler(async ({ data }) => {
-    const adminEmail = process.env.ADMIN_EMAIL || "karanvalangar211@gmail.com";
+    const adminEmail = process.env["ADMIN_EMAIL"] || "karanvalangar211@gmail.com";
 
     // Send notification to admin
     await sendEmail({

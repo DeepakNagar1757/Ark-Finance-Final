@@ -90,8 +90,8 @@ function Services() {
                   {SERVICE_IMAGES[service.slug] ? (
                     <div className="relative overflow-hidden rounded-lg">
                       <img
-                        src={SERVICE_IMAGES[service.slug].src}
-                        alt={SERVICE_IMAGES[service.slug].alt}
+                        src={SERVICE_IMAGES[service.slug]!.src}
+                        alt={SERVICE_IMAGES[service.slug]!.alt}
                         className="w-full min-h-[300px] max-h-[420px] object-cover object-bottom"
                         loading="lazy"
                       />
