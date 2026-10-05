@@ -101,7 +101,6 @@ function Home() {
             <ServiceCard
               key={service.id}
               service={service}
-              titleOverride={service.slug === "tax-consultancy" ? "Qualified CA" : undefined}
             />
           ))}
         </div>
